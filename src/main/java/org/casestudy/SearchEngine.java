@@ -10,10 +10,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SearchEngine {
-    private static final String fileDirectory = "data";
+    private static String fileDirectory = "data";
     private static final Set<String> textFileNames = new HashSet<>();
     private static final HashMap<String, String> textFilesAsStrings = new HashMap<>();
-    private static final HashMap<String, HashMap<String, Integer>> indexedFileMapping = new HashMap<>();
+    private static final HashMap<String, HashMap<String, List<Integer>>> wordIndexMapping = new HashMap<>();
+    private static final HashMap<String, HashMap<String, Integer>> wordFrequencyMapping = new HashMap<>();
 
     public enum searchMethod {
         STRING_SEARCH, REGEX_SEARCH, PREPROCESS_SEARCH
@@ -69,7 +70,6 @@ public class SearchEngine {
      */
     private int stringSearch(String stringToMatch, String fileName) {
 
-        if (0 == stringToMatch.length()) return 0;
         int matching_string_count = 0;
         if (textFilesAsStrings.containsKey(fileName)) {
             String targetText = textFilesAsStrings.get(fileName);
@@ -86,7 +86,6 @@ public class SearchEngine {
     */
     private int regexSearch(String stringToMatch, String fileName) {
 
-        if (0 == stringToMatch.length()) return 0;
         Pattern pattern = Pattern.compile(stringToMatch, Pattern.LITERAL);
         Matcher matcher;
         int matching_string_count = 0;
@@ -109,10 +108,9 @@ public class SearchEngine {
      */
     private int preprocessSearch(String stringToMatch, String fileName) {
 
-        if (0 == stringToMatch.length()) return 0;
-        if (indexedFileMapping.containsKey(fileName)) {
-            if (indexedFileMapping.get(fileName).containsKey(stringToMatch)) {
-                return indexedFileMapping.get(fileName).get(stringToMatch);
+        if (wordFrequencyMapping.containsKey(fileName)) {
+            if (wordFrequencyMapping.get(fileName).containsKey(stringToMatch)) {
+                return wordFrequencyMapping.get(fileName).get(stringToMatch);
             }
         }
         return 0;
@@ -125,17 +123,53 @@ public class SearchEngine {
     private void indexTextFile(String fileName) {
 
         HashMap<String, Integer> wordFrequencies = new HashMap<>();
+        HashMap<String, List<Integer>> wordIndices = new HashMap<>();
 
+        Integer index = 0;
+        List<Integer> tempIndexList;
         String text = textFilesAsStrings.get(fileName);
+        String wordLower, wordAlphaNumeric;
+
         for (String word : text.split("\\s+")) {
-            String wordLower = word.toLowerCase();
+            wordLower = word.toLowerCase();
+            wordAlphaNumeric = wordLower.replaceAll("[^A-Za-z0-9]", "");
             if (!wordFrequencies.containsKey(wordLower)) {
                 wordFrequencies.put(wordLower, 1);
             } else {
                 wordFrequencies.put(wordLower, wordFrequencies.get(wordLower) + 1);
             }
+
+            if (!wordLower.equals(wordAlphaNumeric)) {
+                if (!wordFrequencies.containsKey(wordAlphaNumeric)) {
+                    wordFrequencies.put(wordAlphaNumeric, 1);
+                } else {
+                    wordFrequencies.put(wordAlphaNumeric, wordFrequencies.get(wordLower) + 1);
+                }
+            }
+
+            if(!wordIndices.containsKey(wordLower)) {
+                tempIndexList = new ArrayList<>();
+            }
+            else{
+                tempIndexList = wordIndices.get(wordLower);
+            }
+            tempIndexList.add(index);
+            wordIndices.put(wordLower, tempIndexList);
+
+            if (!wordLower.equals(wordAlphaNumeric)) {
+                if (!wordIndices.containsKey(wordAlphaNumeric)) {
+                    tempIndexList = new ArrayList<>();
+                } else {
+                    tempIndexList = wordIndices.get(wordAlphaNumeric);
+                }
+                tempIndexList.add(index);
+                wordIndices.put(wordAlphaNumeric, tempIndexList);
+            }
+
+            index++;
         }
-        indexedFileMapping.put(fileName, wordFrequencies);
+        wordFrequencyMapping.put(fileName, wordFrequencies);
+        wordIndexMapping.put(fileName, wordIndices);
     }
 
     /*
@@ -191,6 +225,12 @@ public class SearchEngine {
         return fileDirectory;
 
     }
+    public void setFileDirectory(String directory) {
+
+        fileDirectory = directory;
+
+    }
+
 
     public Set<String> getTextFileNames() {
 
