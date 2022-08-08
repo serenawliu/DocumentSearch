@@ -14,7 +14,6 @@ public class SearchEngine {
     private static final Set<String> textFileNames = new HashSet<>();
     private static final HashMap<String, String> textFilesAsStrings = new HashMap<>();
     private static final HashMap<String, HashMap<String, Integer>> indexedFileMapping = new HashMap<>();
-
     public enum searchMethod {
         STRING_SEARCH, REGEX_SEARCH, PREPROCESS_SEARCH
     }
@@ -172,5 +171,14 @@ public class SearchEngine {
         for (String fileName : map.keySet()) {
             System.out.println(fileName + " " + map.get(fileName));
         }
+    }
+    public String getFileDirectory() {
+        return fileDirectory;
+    }
+    public Set<String> getTextFileNames() {
+        return textFileNames;
+    }
+    public HashMap<String, String> getTextFilesAsStrings() {
+        return textFilesAsStrings;
     }
 }
