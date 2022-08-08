@@ -17,13 +17,16 @@ public class SearchEngine {
     }
     private static String fileDirectory = "data";
 
-    public void addTextFile(String fileName) {
+    public void addTextFile(String fileName) throws IOException {
 
         if (new File(fileDirectory + '/' + fileName).isFile()) {
             textFileNames.add(fileName);
+            textFileToString(fileName);
+            System.out.println(textFilesAsStrings.get(fileName));
         } else {
             System.out.println("WARNING: File " + fileName + " could not be found. Check the file path.");
         }
+
     }
 
     public void printMap(LinkedHashMap<String, Integer> map) {
@@ -116,7 +119,7 @@ public class SearchEngine {
     }
 
     /*
-    Helper method to process a file.
+    Helper method to convert a File to a String.
 
 
     @return: HashMap containing a string and the index of appearance.
@@ -124,7 +127,7 @@ public class SearchEngine {
     public void textFileToString(String fileName) throws IOException {
 
         // Create a string from text file.
-        List<String> lines = Files.readAllLines(Paths.get(fileDirectory + '/' + fileName), StandardCharsets.US_ASCII);
+        List<String> lines = Files.readAllLines(Paths.get(fileDirectory + '/' + fileName), StandardCharsets.UTF_8);
         String fileString = String.join("", lines);
         textFilesAsStrings.put(fileName, fileString);
 

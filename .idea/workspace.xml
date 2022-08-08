@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Implemented first pass of regex search &amp; updated file read error checking.">
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Added search directory variable and created method for converting a file to a string.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659849494349</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added search directory variable and created method for converting a file to a string.">
+      <created>1659923982751</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1659923982751</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,7 +132,8 @@
     <MESSAGE value="First working implementation of Document Search Method 1 - StringSearch." />
     <MESSAGE value="Implemented first pass of regex search &amp; updated file read to include a warning." />
     <MESSAGE value="Implemented first pass of regex search &amp; updated file read error checking." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented first pass of regex search &amp; updated file read error checking." />
+    <MESSAGE value="Added search directory variable and created method for converting a file to a string." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added search directory variable and created method for converting a file to a string." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
