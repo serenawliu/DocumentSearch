@@ -27,21 +27,31 @@ public class SearchEngine {
      */
     public LinkedHashMap<String, Integer> search(String stringToMatch, searchMethod searchType) {
         LinkedHashMap<String, Integer> hm = new LinkedHashMap<>();
+        int searchResult;
 
         switch (searchType) {
             case STRING_SEARCH:
                 for (String fileName : textFileNames) {
-                    hm.put(fileName, stringSearch(stringToMatch.toLowerCase(), fileName));
+                    searchResult = stringSearch(stringToMatch.toLowerCase(), fileName);
+                    if (0 < searchResult) {
+                        hm.put(fileName, searchResult);
+                    }
                 }
                 break;
             case REGEX_SEARCH:
                 for (String fileName : textFileNames) {
-                    hm.put(fileName, regexSearch(stringToMatch.toLowerCase(), fileName));
+                    searchResult = regexSearch(stringToMatch.toLowerCase(), fileName);
+                    if (0 < searchResult) {
+                        hm.put(fileName, searchResult);
+                    }
                 }
                 break;
             case PREPROCESS_SEARCH:
                 for (String fileName : textFileNames) {
-                    hm.put(fileName, preprocessSearch(stringToMatch.toLowerCase(), fileName));
+                    searchResult = preprocessSearch(stringToMatch.toLowerCase(), fileName);
+                    if (0 < searchResult) {
+                        hm.put(fileName, searchResult);
+                    }
                 }
                 break;
             default:
@@ -94,8 +104,12 @@ public class SearchEngine {
     @return: int indicating occurrences of exact string match
      */
     private int preprocessSearch(String stringToMatch, String fileName) {
+
         if (indexedFileMapping.containsKey(fileName)) {
-            return indexedFileMapping.get(fileName).get(stringToMatch);
+            printMap(indexedFileMapping.get(fileName));
+            if (indexedFileMapping.get(fileName).containsKey(stringToMatch)){
+                return indexedFileMapping.get(fileName).get(stringToMatch);
+            }
         }
         return 0;
     }
@@ -105,13 +119,13 @@ public class SearchEngine {
     @param: fileName - file to search for matching string
      */
     private void indexTextFile(String fileName) {
-        HashMap<String, Integer> wordFrequencies = new HashMap();
+        HashMap<String, Integer> wordFrequencies = new HashMap<>();
 
         String text = textFilesAsStrings.get(fileName);
         for (String word : text.split("\\s+")) {
             String wordLower = word.toLowerCase();
             if (!wordFrequencies.containsKey(wordLower)) {
-                wordFrequencies.put(word.toLowerCase(), 1);
+                wordFrequencies.put(wordLower, 1);
             } else {
                 wordFrequencies.put(wordLower, wordFrequencies.get(wordLower) + 1);
             }
@@ -141,8 +155,8 @@ public class SearchEngine {
         if (!textFilesAsStrings.containsKey(fileName)) {
             // Create a string from text file.
             List<String> lines = Files.readAllLines(Paths.get(fileDirectory + '/' + fileName), StandardCharsets.UTF_8);
-            String fileString = String.join("", lines);
-            textFilesAsStrings.put(fileName, fileString);
+            String fileString = String.join(" ", lines);
+            textFilesAsStrings.put(fileName, fileString.toLowerCase());
         }
     }
 

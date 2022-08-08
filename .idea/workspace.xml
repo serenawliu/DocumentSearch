@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Implemented preprocessSearch.">
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Fixed casing for file to string conversion, handled edge case for new line spacing in files.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659926740045</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated access to and rearranged methods and in SearchEngine class">
+      <created>1659931391078</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1659931391078</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,7 +162,9 @@
     <MESSAGE value="Changed stringSearch and regexSearch to accept text files as strings." />
     <MESSAGE value="Changed stringSearch and regexSearch to accept text files as strings. Fixed bug with matcher." />
     <MESSAGE value="Implemented preprocessSearch." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented preprocessSearch." />
+    <MESSAGE value="Updated access to and rearranged methods and in SearchEngine class" />
+    <MESSAGE value="Fixed casing for file to string conversion, handled edge case for new line spacing in files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed casing for file to string conversion, handled edge case for new line spacing in files." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
