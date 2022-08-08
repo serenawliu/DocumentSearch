@@ -20,7 +20,6 @@ class SearchEngineTest extends TestCase {
     void tearDown() {
         engine = null
         System.setOut(originalOut)
-        System.setErr(originalErr)
     }
 
     void testSearch() {

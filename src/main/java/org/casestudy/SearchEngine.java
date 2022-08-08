@@ -14,6 +14,7 @@ public class SearchEngine {
     private static final Set<String> textFileNames = new HashSet<>();
     private static final HashMap<String, String> textFilesAsStrings = new HashMap<>();
     private static final HashMap<String, HashMap<String, Integer>> indexedFileMapping = new HashMap<>();
+
     public enum searchMethod {
         STRING_SEARCH, REGEX_SEARCH, PREPROCESS_SEARCH
     }
@@ -25,6 +26,7 @@ public class SearchEngine {
     @returns - LinkedHashMap containing each file name and
      */
     public LinkedHashMap<String, Integer> search(String stringToMatch, searchMethod searchType) {
+
         LinkedHashMap<String, Integer> hm = new LinkedHashMap<>();
         int searchResult;
 
@@ -56,7 +58,7 @@ public class SearchEngine {
             default:
                 break;
         }
-        return sortByRelevance(hm);
+        return sortMapByRelevance(hm);
     }
 
     /*
@@ -66,6 +68,8 @@ public class SearchEngine {
     @return: int indicating occurrences of exact string match
      */
     private int stringSearch(String stringToMatch, String fileName) {
+
+        if (0 == stringToMatch.length()) return 0;
         int matching_string_count = 0;
         if (textFilesAsStrings.containsKey(fileName)) {
             String targetText = textFilesAsStrings.get(fileName);
@@ -82,6 +86,7 @@ public class SearchEngine {
     */
     private int regexSearch(String stringToMatch, String fileName) {
 
+        if (0 == stringToMatch.length()) return 0;
         Pattern pattern = Pattern.compile(stringToMatch, Pattern.LITERAL);
         Matcher matcher;
         int matching_string_count = 0;
@@ -104,8 +109,9 @@ public class SearchEngine {
      */
     private int preprocessSearch(String stringToMatch, String fileName) {
 
+        if (0 == stringToMatch.length()) return 0;
         if (indexedFileMapping.containsKey(fileName)) {
-            if (indexedFileMapping.get(fileName).containsKey(stringToMatch)){
+            if (indexedFileMapping.get(fileName).containsKey(stringToMatch)) {
                 return indexedFileMapping.get(fileName).get(stringToMatch);
             }
         }
@@ -117,6 +123,7 @@ public class SearchEngine {
     @param: fileName - file to search for matching string
      */
     private void indexTextFile(String fileName) {
+
         HashMap<String, Integer> wordFrequencies = new HashMap<>();
 
         String text = textFilesAsStrings.get(fileName);
@@ -136,6 +143,7 @@ public class SearchEngine {
     @param: fileName - Name of file to add.
      */
     public void addTextFile(String fileName) throws IOException {
+
         if (new File(fileDirectory + '/' + fileName).isFile()) {
             textFileNames.add(fileName);
             storeTextFileToString(fileName);
@@ -150,6 +158,7 @@ public class SearchEngine {
     @param: fileName - Name of file to convert to a string
      */
     private void storeTextFileToString(String fileName) throws IOException {
+
         if (!textFilesAsStrings.containsKey(fileName)) {
             // Create a string from text file.
             List<String> lines = Files.readAllLines(Paths.get(fileDirectory + '/' + fileName), StandardCharsets.UTF_8);
@@ -157,8 +166,12 @@ public class SearchEngine {
             textFilesAsStrings.put(fileName, fileString.toLowerCase());
         }
     }
-
-    private LinkedHashMap<String, Integer> sortByRelevance(Map<String, Integer> unsortedMap) {
+    /*
+    Helper method to sort a LinkedHashMap by highest value (relevance).
+    @param: unsortedMap - map to be sorted by relevance.
+    @return: sorted map by relevance.
+     */
+    private LinkedHashMap<String, Integer> sortMapByRelevance(Map<String, Integer> unsortedMap) {
 
         LinkedHashMap<String, Integer> relevanceSortedMap = new LinkedHashMap<>();
         unsortedMap.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).forEachOrdered(x -> relevanceSortedMap.put(x.getKey(), x.getValue()));
@@ -172,13 +185,22 @@ public class SearchEngine {
             System.out.println(fileName + " " + map.get(fileName));
         }
     }
+
     public String getFileDirectory() {
+
         return fileDirectory;
+
     }
+
     public Set<String> getTextFileNames() {
+
         return textFileNames;
+
     }
+
     public HashMap<String, String> getTextFilesAsStrings() {
+
         return textFilesAsStrings;
+
     }
 }
