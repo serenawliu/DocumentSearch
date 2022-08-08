@@ -1,5 +1,6 @@
 package org.casestudy;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class SearchMain {
     public static void main(String[] args) throws IOException {
@@ -9,8 +10,13 @@ public class SearchMain {
         engine.addTextFile("hitchhikers.txt");
         engine.addTextFile("warp_drive.txt");
 
-        engine.printMap(engine.search("ranco-Prussian", SearchEngine.searchMethod.STRING_SEARCH));
-        engine.printMap(engine.search("Resurgent", SearchEngine.searchMethod.REGEX_SEARCH));
-        engine.printMap(engine.search("Resurgent", SearchEngine.searchMethod.PREPROCESS_SEARCH));
+        //TODO Error checking for invalid input.
+        Scanner scan = new Scanner(System.in);  // Create a Scanner object
+        System.out.print("Enter a search term. No spaces, single term: ");
+        String searchTerm = scan.next();
+        System.out.println("\nEnter an integer for a searchMethod 0: String Search, 1: RegEx Search, 2: Indexed Search:");
+        int searchSelection = scan.nextInt();  // Read user input
+        scan.close();
+        engine.printMap(engine.search(searchTerm, SearchEngine.searchMethod.values()[searchSelection]));
     }
 }
