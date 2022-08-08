@@ -22,15 +22,15 @@ public class SearchEngine {
 
         if (new File(fileDirectory + '/' + fileName).isFile()) {
             textFileNames.add(fileName);
-            textFileToString(fileName);
-            System.out.println(textFilesAsStrings.get(fileName));
+            storeTextFileToString(fileName);
+            indexTextFile(fileName);
         } else {
             System.out.println("WARNING: File " + fileName + " could not be found. Check the file path.");
         }
 
     }
 
-    public void printMap(LinkedHashMap<String, Integer> map) {
+    public void printMap(Map<String, Integer> map) {
 
         for (String fileName : map.keySet()) {
             System.out.println(fileName + " " + map.get(fileName));
@@ -107,17 +107,17 @@ public class SearchEngine {
     }
 
     public int preprocessSearch(String stringToMatch, String filePath) {
-        int matching_string_count = 0;
-        return matching_string_count;
+        if (indexedFileMapping.containsKey(filePath)) {
+            return indexedFileMapping.get(filePath).get(stringToMatch);
+        }
+        return 0;
     }
 
     /*
-    Helper method to convert a File to a String.
-
-
-    @return: HashMap containing a string and the index of appearance.
+    Helper method to convert a File to a String and store it in global map.
+    @param: FileName to convert to a string
      */
-    public void textFileToString(String fileName) throws IOException {
+    public void storeTextFileToString(String fileName) throws IOException {
 
         // Create a string from text file.
         List<String> lines = Files.readAllLines(Paths.get(fileDirectory + '/' + fileName), StandardCharsets.UTF_8);
@@ -126,16 +126,17 @@ public class SearchEngine {
 
     }
 
-    public void indexTextFile(String fileName){
+    private void indexTextFile(String fileName){
         HashMap<String, Integer> wordFrequencies= new HashMap();
 
         String text = textFilesAsStrings.get(fileName);
         for (String word: text.split("\\s+")){
-            if(!wordFrequencies.containsKey(word)) {
-                wordFrequencies.put(word, 1);
+            String wordLower = word.toLowerCase();
+            if(!wordFrequencies.containsKey(wordLower)) {
+                wordFrequencies.put(word.toLowerCase(), 1);
             }
             else{
-                wordFrequencies.put(word, wordFrequencies.get(word)+1);
+                wordFrequencies.put(wordLower, wordFrequencies.get(wordLower)+1);
             }
         }
         indexedFileMapping.put(fileName, wordFrequencies);

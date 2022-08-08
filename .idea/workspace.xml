@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Changed stringSearch and regexSearch to accept text files as strings. Fixed bug with matcher.">
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Implemented preprocessSearch.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659924422146</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Changed stringSearch and regexSearch to accept text files as strings. Fixed bug with matcher.">
+      <created>1659926740045</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1659926740045</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,7 +151,8 @@
     <MESSAGE value="Fixed bug for special characters - UTF-8 instead of ASCII" />
     <MESSAGE value="Changed stringSearch and regexSearch to accept text files as strings." />
     <MESSAGE value="Changed stringSearch and regexSearch to accept text files as strings. Fixed bug with matcher." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed stringSearch and regexSearch to accept text files as strings. Fixed bug with matcher." />
+    <MESSAGE value="Implemented preprocessSearch." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented preprocessSearch." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -9,9 +9,8 @@ public class SearchMain {
         engine.addTextFile("hitchhikers.txt");
         engine.addTextFile("warp_drive.txt");
 
-        engine.textFileToString("french_armed_forces.txt");
-
         engine.printMap(engine.search("and", SearchEngine.searchMethod.STRING_SEARCH));
         engine.printMap(engine.search("AND", SearchEngine.searchMethod.REGEX_SEARCH));
+        engine.printMap(engine.search("AND", SearchEngine.searchMethod.PREPROCESS_SEARCH));
     }
 }
