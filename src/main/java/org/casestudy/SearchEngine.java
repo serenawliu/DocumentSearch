@@ -1,23 +1,28 @@
 package org.casestudy;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class SearchEngine {
-    private static Set<String> textFilePaths = new HashSet<>();
-
+    private static Set<String> textFileNames = new HashSet<>();
+    private static HashMap<String, String> textFilesAsStrings = new HashMap<>();
     public enum searchMethod {
         STRING_SEARCH, REGEX_SEARCH, PREPROCESS_SEARCH
     }
+    private static String fileDirectory = "data";
 
-    public void addTextFilePath(String filePath) {
+    public void addTextFile(String fileName) {
 
-        if (new File(filePath).isFile()) {
-            textFilePaths.add(filePath);
+        if (new File(fileDirectory + '/' + fileName).isFile()) {
+            textFileNames.add(fileName);
         } else {
-            System.out.println("WARNING: File " + filePath + " could not be found. Check the file path.");
+            System.out.println("WARNING: File " + fileName + " could not be found. Check the file path.");
         }
     }
 
@@ -41,21 +46,18 @@ public class SearchEngine {
 
         switch (s) {
             case STRING_SEARCH:
-                for (String filePath : textFilePaths) {
-                    String[] paths = filePath.split("/");
-                    hm.put(paths[paths.length - 1], stringSearch(stringToMatch.toLowerCase(), filePath));
+                for (String fileName : textFileNames) {
+                    hm.put(fileName, stringSearch(stringToMatch.toLowerCase(), fileName));
                 }
                 break;
             case REGEX_SEARCH:
-                for (String filePath : textFilePaths) {
-                    String[] paths = filePath.split("/");
-                    hm.put(paths[paths.length - 1], regexSearch(stringToMatch.toLowerCase(), filePath));
+                for (String fileName : textFileNames) {
+                    hm.put(fileName, regexSearch(stringToMatch.toLowerCase(), fileName));
                 }
                 break;
             case PREPROCESS_SEARCH:
-                for (String filePath : textFilePaths) {
-                    String[] paths = filePath.split("/");
-                    hm.put(paths[paths.length - 1], preprocessSearch(stringToMatch.toLowerCase(), filePath));
+                for (String fileName : textFileNames) {
+                    hm.put(fileName, preprocessSearch(stringToMatch.toLowerCase(), fileName));
                 }
                 break;
             default:
@@ -71,7 +73,7 @@ public class SearchEngine {
     @return: int indicating occurrences of exact string match
      */
     public int stringSearch(String stringToMatch, String filePath) throws IOException {
-        File textFile = new File(filePath);
+        File textFile = new File(fileDirectory + '/' + filePath);
         BufferedReader br = new BufferedReader(new FileReader(textFile));
         String currentLine;
         int matching_string_count = 0;
@@ -90,7 +92,7 @@ public class SearchEngine {
     @return: int indicating occurrences of exact string match
      */
     public int regexSearch(String stringToMatch, String filePath) throws IOException {
-        File textFile = new File(filePath);
+        File textFile = new File(fileDirectory + '/' + filePath);
         BufferedReader br = new BufferedReader(new FileReader(textFile));
         String currentLine;
 
@@ -108,9 +110,27 @@ public class SearchEngine {
     }
 
     public int preprocessSearch(String stringToMatch, String filePath) {
+        //TODO: Find a method for grabbing multiple searches
         int matching_string_count = 0;
-        String[] directories = filePath.split("/");
-        String fileName = directories[directories.length-1];
         return matching_string_count;
+    }
+
+    /*
+    Helper method to process a file.
+
+
+    @return: HashMap containing a string and the index of appearance.
+     */
+    public void textFileToString(String fileName) throws IOException {
+
+        // Create a string from text file.
+        List<String> lines = Files.readAllLines(Paths.get(fileDirectory + '/' + fileName), StandardCharsets.US_ASCII);
+        String fileString = String.join("", lines);
+        textFilesAsStrings.put(fileName, fileString);
+
+    }
+
+    public void indexTextFile(){
+
     }
 }

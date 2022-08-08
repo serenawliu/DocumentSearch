@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="First working implementation of Document Search Method 1 - StringSearch.">
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Implemented first pass of regex search &amp; updated file read error checking.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_text/french_armed_forces.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/french_armed_forces.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_text/hitchhikers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/hitchhikers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_text/warp_drive.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/warp_drive.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
     </list>
@@ -71,7 +68,35 @@
       <option name="project" value="LOCAL" />
       <updated>1659749264464</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="First working implementation of Document Search Method 1 - StringSearch.">
+      <created>1659849182472</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659849182472</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Implemented first pass of regex search &amp; updated file read to include a warning.">
+      <created>1659849455242</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1659849455242</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Implemented first pass of regex search &amp; updated file read to include a warning.">
+      <created>1659849481091</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1659849481092</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implemented first pass of regex search &amp; updated file read error checking.">
+      <created>1659849494349</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1659849494349</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,7 +124,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First working implementation of Document Search Method 1 - StringSearch." />
-    <option name="LAST_COMMIT_MESSAGE" value="First working implementation of Document Search Method 1 - StringSearch." />
+    <MESSAGE value="Implemented first pass of regex search &amp; updated file read to include a warning." />
+    <MESSAGE value="Implemented first pass of regex search &amp; updated file read error checking." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented first pass of regex search &amp; updated file read error checking." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
