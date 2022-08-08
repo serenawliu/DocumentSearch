@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Fixed casing for file to string conversion, handled edge case for new line spacing in files.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659931391078</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixed casing for file to string conversion, handled edge case for new line spacing in files.">
+      <created>1659933783725</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1659933783725</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

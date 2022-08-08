@@ -106,7 +106,6 @@ public class SearchEngine {
     private int preprocessSearch(String stringToMatch, String fileName) {
 
         if (indexedFileMapping.containsKey(fileName)) {
-            printMap(indexedFileMapping.get(fileName));
             if (indexedFileMapping.get(fileName).containsKey(stringToMatch)){
                 return indexedFileMapping.get(fileName).get(stringToMatch);
             }
