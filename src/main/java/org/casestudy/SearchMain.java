@@ -1,7 +1,7 @@
 package org.casestudy;
 import java.io.IOException;
 
-public class Main {
+public class SearchMain {
     public static void main(String[] args) throws IOException {
         SearchEngine engine = new SearchEngine();
 

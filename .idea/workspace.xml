@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Added search directory variable and created method for converting a file to a string.">
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Changed stringSearch and regexSearch to accept text files as strings. Fixed bug with matcher.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659923982751</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed bug for special characters - UTF-8 instead of ASCII">
+      <created>1659924422146</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1659924422146</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -133,7 +141,10 @@
     <MESSAGE value="Implemented first pass of regex search &amp; updated file read to include a warning." />
     <MESSAGE value="Implemented first pass of regex search &amp; updated file read error checking." />
     <MESSAGE value="Added search directory variable and created method for converting a file to a string." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added search directory variable and created method for converting a file to a string." />
+    <MESSAGE value="Fixed bug for special characters - UTF-8 instead of ASCII" />
+    <MESSAGE value="Changed stringSearch and regexSearch to accept text files as strings." />
+    <MESSAGE value="Changed stringSearch and regexSearch to accept text files as strings. Fixed bug with matcher." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed stringSearch and regexSearch to accept text files as strings. Fixed bug with matcher." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

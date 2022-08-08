@@ -6,12 +6,13 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class SearchEngine {
     private static Set<String> textFileNames = new HashSet<>();
     private static HashMap<String, String> textFilesAsStrings = new HashMap<>();
+
+    private static HashMap<String, HashMap<String, Integer>> indexedFileMapping = new HashMap<>();
     public enum searchMethod {
         STRING_SEARCH, REGEX_SEARCH, PREPROCESS_SEARCH
     }
@@ -44,10 +45,10 @@ public class SearchEngine {
         return relevanceSortedMap;
     }
 
-    public LinkedHashMap<String, Integer> search(String stringToMatch, searchMethod s) throws IOException {
+    public LinkedHashMap<String, Integer> search(String stringToMatch, searchMethod searchType) {
         LinkedHashMap<String, Integer> hm = new LinkedHashMap<>();
 
-        switch (s) {
+        switch (searchType) {
             case STRING_SEARCH:
                 for (String fileName : textFileNames) {
                     hm.put(fileName, stringSearch(stringToMatch.toLowerCase(), fileName));
@@ -75,16 +76,11 @@ public class SearchEngine {
     @param: fileToSearch - file to search for matching string
     @return: int indicating occurrences of exact string match
      */
-    public int stringSearch(String stringToMatch, String filePath) throws IOException {
-        File textFile = new File(fileDirectory + '/' + filePath);
-        BufferedReader br = new BufferedReader(new FileReader(textFile));
-        String currentLine;
+    public int stringSearch(String stringToMatch, String filePath){
         int matching_string_count = 0;
-
-        while ((currentLine = br.readLine()) != null) {
-            if (currentLine.contains(stringToMatch)) {
-                ++matching_string_count;
-            }
+        if (textFilesAsStrings.containsKey(filePath)) {
+            String targetText = textFilesAsStrings.get(filePath);
+            matching_string_count = targetText.split(stringToMatch, -1).length-1;
         }
         return matching_string_count;
     }
@@ -94,18 +90,16 @@ public class SearchEngine {
     @param: fileToSearch - file to search for matching string
     @return: int indicating occurrences of exact string match
      */
-    public int regexSearch(String stringToMatch, String filePath) throws IOException {
-        File textFile = new File(fileDirectory + '/' + filePath);
-        BufferedReader br = new BufferedReader(new FileReader(textFile));
-        String currentLine;
+    public int regexSearch(String stringToMatch, String filePath) {
 
         Pattern pattern = Pattern.compile(stringToMatch, Pattern.LITERAL);
         Matcher matcher;
         int matching_string_count = 0;
 
-        while ((currentLine = br.readLine()) != null) {
-            matcher = pattern.matcher(currentLine);
-            if (matcher.find()) {
+        if (textFilesAsStrings.containsKey(filePath)) {
+            String targetText = textFilesAsStrings.get(filePath);
+            matcher = pattern.matcher(targetText);
+            while(matcher.find()) {
                 ++matching_string_count;
             }
         }
@@ -113,7 +107,6 @@ public class SearchEngine {
     }
 
     public int preprocessSearch(String stringToMatch, String filePath) {
-        //TODO: Find a method for grabbing multiple searches
         int matching_string_count = 0;
         return matching_string_count;
     }
@@ -133,7 +126,18 @@ public class SearchEngine {
 
     }
 
-    public void indexTextFile(){
+    public void indexTextFile(String fileName){
+        HashMap<String, Integer> wordFrequencies= new HashMap();
 
+        String text = textFilesAsStrings.get(fileName);
+        for (String word: text.split("\\s+")){
+            if(!wordFrequencies.containsKey(word)) {
+                wordFrequencies.put(word, 1);
+            }
+            else{
+                wordFrequencies.put(word, wordFrequencies.get(word)+1);
+            }
+        }
+        indexedFileMapping.put(fileName, wordFrequencies);
     }
 }
