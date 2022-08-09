@@ -107,14 +107,56 @@ public class SearchEngine {
     @return: int indicating occurrences of exact string match
      */
     private int preprocessSearch(String stringToMatch, String fileName) {
-
-        if (wordFrequencyMapping.containsKey(fileName)) {
+        if (!wordFrequencyMapping.containsKey(fileName)) return 0;
+        // If the search is one term, access the frequency map. Otherwise, access indices
+        Map<String, Integer> tempMap;
+        String[] wordsToQuery= stringToMatch.split(" ");
+        if(1 == wordsToQuery.length){
             if (wordFrequencyMapping.get(fileName).containsKey(stringToMatch)) {
                 return wordFrequencyMapping.get(fileName).get(stringToMatch);
             }
         }
+        else {
+                tempMap = wordFrequencyMapping.get(fileName);
+                // Optimization - see if all words are present
+                for (String word: wordsToQuery){
+                    if (!tempMap.containsKey(word)) {
+                        return 0;
+                    }}
+            return indexSearch(wordsToQuery, fileName);
+        }
         return 0;
+        }
+    /*
+        Method for multiple words in search query
+     */
+    private int indexSearch(String[] wordsToQuery, String fileName) {
+        Map<String, List<Integer>> tempMap = wordIndexMapping.get(fileName);
+        String currentWord;
+        Integer currentIndex;
+        Queue<Integer> indicesToCheck = new LinkedList<>(tempMap.get(wordsToQuery[0]));
+        System.out.println("SIZE OF INDICES TO CHECK:::::" + indicesToCheck.size());
+        int sizeOfIndicesToCheck;
+
+        for (int i = 1; i < wordsToQuery.length; i++) {
+            currentWord = wordsToQuery[i];
+            sizeOfIndicesToCheck = indicesToCheck.size();
+
+            for (int j = 0; j<sizeOfIndicesToCheck; j++){
+                currentIndex = indicesToCheck.remove();
+                System.out.println("\nCURRENT INDEX:::::" + currentIndex);
+                for (Integer temp: tempMap.get(currentWord)) {
+                    System.out.print(" Index to match:::::: " + temp);
+                    if (temp == currentIndex+1) {
+                        indicesToCheck.add(temp);
+                        break;
+                    }
+                }
+            }
+        }
+        return indicesToCheck.size();
     }
+
 
     /*
     Helper method to index a text file for the indexed search method.
