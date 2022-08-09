@@ -19,7 +19,7 @@ public class SearchMain {
         while (true) {
             if (!scan.hasNextInt()) {
                 scan.next();
-                System.out.println("Please enter a valid value!");
+                System.out.println("Please enter a valid value.");
             } else {
                 int searchSelection = scan.nextInt();
                 if (searchSelection > 2 || searchSelection < 0) {
