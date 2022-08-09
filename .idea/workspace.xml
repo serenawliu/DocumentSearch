@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Updated documentation.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscussionQuestions" beforeDir="false" afterPath="$PROJECT_DIR$/DiscussionQuestions.txt" afterDir="false" />
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Updated README.md">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/casestudy/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/casestudy/PerformanceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/casestudy/SearchEngineTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/casestudy/SearchEngineTest.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660079166907</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Updated README.md">
+      <created>1660080799978</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1660080799978</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -339,7 +347,8 @@
     <MESSAGE value="Minor bug fix in processing user input" />
     <MESSAGE value="Added random word generation to PerformanceTest; added and updated unit tests to reflect changes to search." />
     <MESSAGE value="Updated documentation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated documentation." />
+    <MESSAGE value="Updated README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

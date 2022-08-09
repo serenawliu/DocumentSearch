@@ -39,8 +39,9 @@ Running the application:
 - Run PerformanceTest to view execution times for 2 million random search terms for each search method.
 
 - Run SearchEngineTest to run a collection of unit tests.
+- Generate JavaDoc to view classes, method descriptions by navigating to Tools | Generate JavaDoc and specify an output directory. Note that only public methods/variables can be viewed this way!
 
-NOTE:
+NOTES:
 Discussions on performance and scaling this application can be found in file DiscussionQuestions.txt.
 
 A short description of the index search can be found under IndexSearchDescription.
