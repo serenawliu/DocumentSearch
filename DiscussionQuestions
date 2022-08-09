@@ -1,0 +1,25 @@
+Run a performance test that does 2M searches with random search
+terms, and measures execution time. Which approach is fastest? Why?
+
+Search results:
+Run time for string search in milliseconds:  37869 ms
+Run time for regex search in milliseconds:  37692 ms
+Run time for preprocess search in milliseconds:  1221 ms
+
+Index Search has the fastest execution time. Since the files are already processed by the time index search is called,
+the execution time is composed of accesses to the map of stored word indices and word frequencies.
+For both string and regular expression matching, each word in the text files
+would need to be processed at the time of the search, and would be scaled linearly to the size of the text file.
+
+
+- Provide some thoughts on what you would do on the software or
+hardware side to make this program scale to handle massive content
+and/or very large request volume (5000 requests/second or more).
+
+On the software side, there are many additions that could be made: building a cache of commonly searched terms and their frequencies,
+using the MapReduce programming model,
+using ElasticSearch which has a more robust indexing and data ingestion process, or creating an inverted index - a map of
+unique words and a list of documents they can be found in.
+
+On the hardware side, handle large request volume would require distributing the search process across multiple threads or multiple servers (would require a consensus
+algorithm and load balancers). For instance, Google requires multiple datacenters.

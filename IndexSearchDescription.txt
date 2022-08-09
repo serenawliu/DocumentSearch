@@ -1,6 +1,6 @@
 ASSUMPTIONS:
 
-I'm assuming that there can be multiple search terms, separated by a space. A search term can contain any alphanumeric
+I'm assuming that there can be one or more search terms, separated by a space. A search term can contain any alphanumeric
 or special characters.
 
 Index Files:
@@ -16,8 +16,7 @@ Return 0 if not.
 3. Call index search.
 
 Index search:
-
-Steps
+Steps:
 At this point, we know that all words are present within the text file, now we just have to see that the terms are in
 the correct order sequentially.
 Pre-loop:

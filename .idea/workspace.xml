@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Minor bug fix in processing user input">
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Added random word generation to PerformanceTest; added and updated unit tests to reflect changes to search.">
+      <change afterPath="$PROJECT_DIR$/DiscussionQuestions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchDescriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/IndexSearchDescription.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestA.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/casestudy/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/casestudy/PerformanceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/casestudy/SearchEngineTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/casestudy/SearchEngineTest.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660014793719</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added random word generation to PerformanceTest; added and updated unit tests to reflect changes to search.">
+      <created>1660076956568</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1660076956568</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -310,7 +318,8 @@
     <MESSAGE value="Added descriptions for search methods in SearchDescriptions." />
     <MESSAGE value="Code cleanup in aisle indexSearch." />
     <MESSAGE value="Minor bug fix in processing user input" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor bug fix in processing user input" />
+    <MESSAGE value="Added random word generation to PerformanceTest; added and updated unit tests to reflect changes to search." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added random word generation to PerformanceTest; added and updated unit tests to reflect changes to search." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

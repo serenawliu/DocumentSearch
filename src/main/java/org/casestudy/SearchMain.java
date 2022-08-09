@@ -16,13 +16,11 @@ public class SearchMain {
         String searchTerm = scan.nextLine();
 
         System.out.println("\nEnter an integer indicating a search method 0: String Match, 1: Regular Expression, 2: Index: ");
-        while(true){
-
+        while (true) {
             if (!scan.hasNextInt()) {
                 scan.next();
                 System.out.println("Please enter a valid value!");
-            }
-            else {
+            } else {
                 int searchSelection = scan.nextInt();
                 if (searchSelection > 2 || searchSelection < 0) {
                     System.out.println("Please enter a valid value.");
@@ -31,9 +29,7 @@ public class SearchMain {
                     engine.printMap(engine.search(searchTerm, SearchEngine.searchMethod.values()[searchSelection]));
                     break;
                 }
-
             }
-
         }
 
     }
