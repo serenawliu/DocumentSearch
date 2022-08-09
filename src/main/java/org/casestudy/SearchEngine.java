@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SearchEngine {
-    private static String fileDirectory = "data";
+    private static final String fileDirectory = "data";
     private static final Set<String> textFileNames = new HashSet<>();
     private static final HashMap<String, String> textFilesAsStrings = new HashMap<>();
     private static final HashMap<String, HashMap<String, List<Integer>>> wordIndexMapping = new HashMap<>();
@@ -20,11 +20,11 @@ public class SearchEngine {
         STRING_SEARCH, REGEX_SEARCH, PREPROCESS_SEARCH
     }
 
-    /*
+    /**
     Method to call each search method
-    @param: stringToMatch - string to search
-    @param: searchType - enum indicating method used to search
-    @returns - LinkedHashMap containing each file name and
+    @param stringToMatch - string to search
+    @param searchType - enum indicating method used to search
+    @return - LinkedHashMap containing each file name and
      */
     public LinkedHashMap<String, Integer> search(String stringToMatch, searchMethod searchType) {
 
@@ -62,11 +62,11 @@ public class SearchEngine {
         return sortMapByRelevance(hm);
     }
 
-    /*
+    /**
     Method to parse through a text file string and search for a target string.
-    @param: stringToMatch - target string to find in file
-    @param: fileToSearch - file to search for matching string
-    @return: int indicating occurrences of exact string match
+    @param stringToMatch - target string to find in file
+    @param fileName - file to search for matching string
+    @return int indicating occurrences of exact string match
      */
     private int stringSearch(String stringToMatch, String fileName) {
 
@@ -78,11 +78,11 @@ public class SearchEngine {
         return matching_string_count;
     }
 
-    /*
+    /**
     Method to parse through a text file string and search for a target string using regex.
-    @param: stringToMatch - target string to find in file
-    @param: fileName - file to search for matching string
-    @return: int indicating occurrences of exact string match
+    @param stringToMatch - target string to find in file
+    @param fileName - file to search for matching string
+    @return int indicating occurrences of exact string match
     */
     private int regexSearch(String stringToMatch, String fileName) {
 
@@ -100,11 +100,11 @@ public class SearchEngine {
         return matching_string_count;
     }
 
-    /*
+    /**
     Method to parse through a text file string and search for a target string using an indexed search.
-    @param: stringToMatch - target string to find in file
-    @param: fileName - file to search for matching string
-    @return: int indicating occurrences of exact string match
+    @param stringToMatch - target string to find in file
+    @param fileName - file to search for matching string
+    @return int indicating occurrences of exact string match
      */
     private int preprocessSearch(String stringToMatch, String fileName) {
         if (!wordFrequencyMapping.containsKey(fileName)) return 0;
@@ -127,8 +127,11 @@ public class SearchEngine {
         }
         return 0;
         }
-    /*
-        Method for multiple words in search query
+    /**
+    Method for a search query containing multiple words.
+    @param wordsToQuery - array of words in search term.
+    @param fileName - fileName to perform indexSearch.
+    @return int indicating number of search term matches in file.
      */
     private int indexSearch(String[] wordsToQuery, String fileName) {
         Map<String, List<Integer>> tempMap = wordIndexMapping.get(fileName);
@@ -154,10 +157,9 @@ public class SearchEngine {
         return indicesToCheck.size();
     }
 
-
-    /*
+    /**
     Helper method to index a text file for the indexed search method.
-    @param: fileName - file to search for matching string
+    @param fileName - file to search for matching string
      */
     private void indexTextFile(String fileName) {
 
@@ -211,9 +213,9 @@ public class SearchEngine {
         wordIndexMapping.put(fileName, wordIndices);
     }
 
-    /*
+    /**
     Method to add a text file to list of text files to be queried.
-    @param: fileName - Name of file to add.
+    @param fileName - Name of file to add.
      */
     public void addTextFile(String fileName) throws IOException {
 
@@ -226,9 +228,9 @@ public class SearchEngine {
         }
     }
 
-    /*
+    /**
     Helper method to convert a File to a String and store it in a shared map.
-    @param: fileName - Name of file to convert to a string
+    @param fileName - Name of file to convert to a string
      */
     private void storeTextFileToString(String fileName) throws IOException {
 
@@ -239,10 +241,10 @@ public class SearchEngine {
             textFilesAsStrings.put(fileName, fileString.toLowerCase());
         }
     }
-    /*
+    /**
     Helper method to sort a LinkedHashMap by highest value (relevance).
-    @param: unsortedMap - map to be sorted by relevance.
-    @return: sorted map by relevance.
+    @param unsortedMap - map to be sorted by relevance.
+    @return sorted map by relevance.
      */
     private LinkedHashMap<String, Integer> sortMapByRelevance(Map<String, Integer> unsortedMap) {
 
@@ -252,6 +254,10 @@ public class SearchEngine {
         return relevanceSortedMap;
     }
 
+    /**
+     * Method to print map details to the console.
+     * @param map - map to print.
+     */
     public void printMap(Map<String, Integer> map) {
 
         for (String fileName : map.keySet()) {
@@ -259,27 +265,13 @@ public class SearchEngine {
         }
     }
 
-    public String getFileDirectory() {
-
-        return fileDirectory;
-
-    }
-    public void setFileDirectory(String directory) {
-
-        fileDirectory = directory;
-
-    }
-
-
+    /**
+     * Method to get loaded and processed text file names.
+     * @return Set of text file names.
+     */
     public Set<String> getTextFileNames() {
 
         return textFileNames;
-
-    }
-
-    public HashMap<String, String> getTextFilesAsStrings() {
-
-        return textFilesAsStrings;
 
     }
 }
