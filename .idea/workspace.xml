@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Code cleanup in aisle indexSearch.">
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Minor bug fix in processing user input">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hitchhikers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/hitchhikers.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/casestudy/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/casestudy/PerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/casestudy/SearchEngineTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/casestudy/SearchEngineTest.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660006535901</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Minor bug fix in processing user input">
+      <created>1660014793719</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1660014793719</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,7 +309,8 @@
     <MESSAGE value="Added functionality for supporting multiple words in a search term." />
     <MESSAGE value="Added descriptions for search methods in SearchDescriptions." />
     <MESSAGE value="Code cleanup in aisle indexSearch." />
-    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup in aisle indexSearch." />
+    <MESSAGE value="Minor bug fix in processing user input" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor bug fix in processing user input" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

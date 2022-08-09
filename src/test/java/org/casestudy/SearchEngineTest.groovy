@@ -22,27 +22,72 @@ class SearchEngineTest extends TestCase {
         System.setOut(originalOut)
     }
 
-    void testSearch() {
+    void testSearchOneWord() {
+        engine.addTextFile("hitchhikers.txt")
         engine.addTextFile("warp_drive.txt")
+        engine.addTextFile("french_armed_forces.txt")
         engine.printMap(engine.search("warp", SearchEngine.searchMethod.STRING_SEARCH))
-        assertEquals(outContent.toString(), "warp_drive.txt 6\n")
+        assertEquals(outContent.toString(), "Search Results:\n\nwarp_drive.txt 6\nhitchhikers.txt 0\n" +
+                "french_armed_forces.txt 0\n")
         outContent.reset()
         engine.printMap(engine.search("warp", SearchEngine.searchMethod.REGEX_SEARCH))
-        assertEquals(outContent.toString(), "warp_drive.txt 6\n")
+        assertEquals(outContent.toString(), "Search Results:\n\nwarp_drive.txt 6\nhitchhikers.txt 0\n" +
+                "french_armed_forces.txt 0\n")
         outContent.reset()
         engine.printMap(engine.search("warp", SearchEngine.searchMethod.PREPROCESS_SEARCH))
-        assertEquals(outContent.toString(), "warp_drive.txt 6\n")
+        assertEquals(outContent.toString(), "Search Results:\n\nwarp_drive.txt 6\nhitchhikers.txt 0\n" +
+                "french_armed_forces.txt 0\n")
 
-        /* Test Cases:
-        Happy Path: text is in file
-        Alpha characters in file
-        numbers in file
-        string encompassed in other word
-        space delimited?
-        Negative: no files
-        none present words
-         */
+    }
+    void testSearchMultipleWords() {
+        engine.addTextFile("hitchhikers.txt")
+        engine.addTextFile("warp_drive.txt")
+        engine.addTextFile("french_armed_forces.txt")
+        engine.printMap(engine.search("hello hi", SearchEngine.searchMethod.STRING_SEARCH))
+        assertEquals(outContent.toString(), "Search Results:\n\nhitchhikers.txt 4\nfrench_armed_forces.txt 0\n" +
+                "warp_drive.txt 0\n")
+        outContent.reset()
+        engine.printMap(engine.search("hello hi", SearchEngine.searchMethod.REGEX_SEARCH))
+        assertEquals(outContent.toString(), "Search Results:\n\nhitchhikers.txt 4\nfrench_armed_forces.txt 0\n" +
+                "warp_drive.txt 0\n")
+        outContent.reset()
+        engine.printMap(engine.search("hello hi", SearchEngine.searchMethod.PREPROCESS_SEARCH))
+        assertEquals(outContent.toString(), "Search Results:\n\nhitchhikers.txt 4\nfrench_armed_forces.txt 0\n" +
+                "warp_drive.txt 0\n")
+    }
 
+    void testSearchSpecialCharacters() {
+        engine.addTextFile("hitchhikers.txt")
+        engine.addTextFile("warp_drive.txt")
+        engine.addTextFile("french_armed_forces.txt")
+        engine.printMap(engine.search("!!!!!", SearchEngine.searchMethod.STRING_SEARCH))
+        assertEquals(outContent.toString(), "Search Results:\n\nhitchhikers.txt 1\nfrench_armed_forces.txt 0\n" +
+                "warp_drive.txt 0\n")
+        outContent.reset()
+        engine.printMap(engine.search("!!!!!", SearchEngine.searchMethod.REGEX_SEARCH))
+        assertEquals(outContent.toString(), "Search Results:\n\nhitchhikers.txt 1\nfrench_armed_forces.txt 0\n" +
+                "warp_drive.txt 0\n")
+        outContent.reset()
+        engine.printMap(engine.search("!!!!!", SearchEngine.searchMethod.PREPROCESS_SEARCH))
+        assertEquals(outContent.toString(), "Search Results:\n\nhitchhikers.txt 1\nfrench_armed_forces.txt 0\n" +
+                "warp_drive.txt 0\n")
+    }
+
+    void testSearchWordOnNewLine() {
+        engine.addTextFile("hitchhikers.txt")
+        engine.addTextFile("warp_drive.txt")
+        engine.addTextFile("french_armed_forces.txt")
+        engine.printMap(engine.search("Resurgent French armies", SearchEngine.searchMethod.STRING_SEARCH))
+        assertEquals(outContent.toString(), "Search Results:\n\nfrench_armed_forces.txt 1\nhitchhikers.txt 0\n" +
+                "warp_drive.txt 0\n")
+        outContent.reset()
+        engine.printMap(engine.search("Resurgent French armies", SearchEngine.searchMethod.REGEX_SEARCH))
+        assertEquals(outContent.toString(), "Search Results:\n\nfrench_armed_forces.txt 1\nhitchhikers.txt 0\n" +
+                "warp_drive.txt 0\n")
+        outContent.reset()
+        engine.printMap(engine.search("Resurgent French armies", SearchEngine.searchMethod.PREPROCESS_SEARCH))
+        assertEquals(outContent.toString(), "Search Results:\n\nfrench_armed_forces.txt 1\nhitchhikers.txt 0\n" +
+                "warp_drive.txt 0\n")
     }
 
     void testAddTextFile() {
@@ -57,7 +102,8 @@ class SearchEngineTest extends TestCase {
     void testPrintMap() {
         engine.addTextFile("hitchhikers.txt")
         engine.printMap(engine.search("guIDE", SearchEngine.searchMethod.STRING_SEARCH))
-        assertEquals(outContent.toString(), "hitchhikers.txt 8\n")
+        assertEquals(outContent.toString(), "Search Results:\n\nhitchhikers.txt 8\nfrench_armed_forces.txt 0\n" +
+                "warp_drive.txt 0\n")
     }
 
 }

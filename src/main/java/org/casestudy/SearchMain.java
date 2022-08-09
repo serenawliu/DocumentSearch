@@ -15,7 +15,7 @@ public class SearchMain {
         System.out.print("Enter a search term: ");
         String searchTerm = scan.nextLine();
 
-        System.out.println("\nEnter an integer for a searchMethod 0: String Search, 1: RegEx Search, 2: Indexed Search:");
+        System.out.println("\nEnter an integer indicating a search method 0: String Match, 1: Regular Expression, 2: Index: ");
         while(true){
 
             if (!scan.hasNextInt()) {

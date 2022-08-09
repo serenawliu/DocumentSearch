@@ -21,11 +21,11 @@ public class SearchEngine {
     }
 
     /**
-     * Method to call each search method
+     * Method to call a search method based on user input.
      *
      * @param stringToMatch - string to search
      * @param searchType    - enum indicating method used to search
-     * @return - LinkedHashMap containing each file name and
+     * @return - LinkedHashMap with filename and int indicating number of search term appearances
      */
     public LinkedHashMap<String, Integer> search(String stringToMatch, searchMethod searchType) {
 
@@ -56,61 +56,63 @@ public class SearchEngine {
     /**
      * Method to parse through a text file string and search for a target string.
      *
-     * @param stringToMatch - target string to find in file
-     * @param fileName      - file to search for matching string
+     * @param stringToMatch - target string
+     * @param fileName      - file to search
      * @return int indicating occurrences of exact string match
      */
     private int stringSearch(String stringToMatch, String fileName) {
 
-        int matching_string_count = 0;
-        if (textFilesAsStrings.containsKey(fileName)) {
-            String targetText = textFilesAsStrings.get(fileName);
-            matching_string_count = targetText.split(stringToMatch, -1).length - 1;
-        }
-        return matching_string_count;
+        if (!textFilesAsStrings.containsKey(fileName)) return 0;
+
+        String targetText = textFilesAsStrings.get(fileName);
+
+        return targetText.split(stringToMatch, -1).length - 1;
     }
 
     /**
      * Method to parse through a text file string and search for a target string using regex.
      *
-     * @param stringToMatch - target string to find in file
-     * @param fileName      - file to search for matching string
+     * @param stringToMatch - target string
+     * @param fileName      - file to search
      * @return int indicating occurrences of exact string match
      */
     private int regexSearch(String stringToMatch, String fileName) {
 
+        if (!textFilesAsStrings.containsKey(fileName)) return 0;
+
+        String targetText = textFilesAsStrings.get(fileName);
         Pattern pattern = Pattern.compile(stringToMatch, Pattern.LITERAL);
         Matcher matcher;
-        int matching_string_count = 0;
 
-        if (textFilesAsStrings.containsKey(fileName)) {
-            String targetText = textFilesAsStrings.get(fileName);
-            matcher = pattern.matcher(targetText);
-            while (matcher.find()) {
-                ++matching_string_count;
-            }
+        int matching_string_count = 0;
+        matcher = pattern.matcher(targetText);
+
+        while (matcher.find()) {
+            ++matching_string_count;
         }
+
         return matching_string_count;
     }
 
     /**
      * Method to parse through a text file string and search for a target string using an indexed search.
      *
-     * @param stringToMatch - target string to find in file
-     * @param fileName      - file to search for matching string
+     * @param stringToMatch - target string
+     * @param fileName      - file to search
      * @return int indicating occurrences of exact string match
      */
     private int preprocessSearch(String stringToMatch, String fileName) {
+
         if (!wordFrequencyMapping.containsKey(fileName)) return 0;
-        // If the search is one term, access the frequency map. Otherwise, call indexSearch.
-        Map<String, Integer> tempMap;
+
+        Map<String, Integer> tempMap = wordFrequencyMapping.get(fileName);
         String[] wordsToQuery = stringToMatch.split(" ");
+
         if (1 == wordsToQuery.length) {
-            if (wordFrequencyMapping.get(fileName).containsKey(stringToMatch)) {
-                return wordFrequencyMapping.get(fileName).get(stringToMatch);
+            if (tempMap.containsKey(stringToMatch)) {
+                return tempMap.get(stringToMatch);
             }
         } else {
-            tempMap = wordFrequencyMapping.get(fileName);
             for (String word : wordsToQuery) {
                 if (!tempMap.containsKey(word)) {
                     return 0;
@@ -153,9 +155,9 @@ public class SearchEngine {
     }
 
     /**
-     * Helper method to index a text file for the indexed search method.
+     * Method to index a text file for the indexed search method.
      *
-     * @param fileName - file to search for matching string
+     * @param fileName - file to search
      */
     private void indexTextFile(String fileName) {
 
@@ -168,8 +170,10 @@ public class SearchEngine {
         String wordLower, wordAlphaNumeric;
 
         for (String word : text.split("\\s+")) {
+
             wordLower = word.toLowerCase();
             wordAlphaNumeric = wordLower.replaceAll("[^A-Za-z0-9]", "");
+
             if (!wordFrequencies.containsKey(wordLower)) {
                 wordFrequencies.put(wordLower, 1);
             } else {
@@ -254,12 +258,13 @@ public class SearchEngine {
     }
 
     /**
-     * Method to print map details to the console.
+     * Method to print search result details to the console.
      *
      * @param map - map to print.
      */
     public void printMap(Map<String, Integer> map) {
 
+        System.out.println("Search Results:\n");
         for (String fileName : map.keySet()) {
             System.out.println(fileName + " " + map.get(fileName));
         }
