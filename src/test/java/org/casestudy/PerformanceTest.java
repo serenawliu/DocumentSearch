@@ -5,7 +5,6 @@ import java.util.Random;
 
 public class PerformanceTest {
     private static final SearchEngine engine = new SearchEngine();
-
     public static void main(String[] args) throws IOException {
         int NUM_ITERATIONS = 2000000;
 
@@ -48,5 +47,4 @@ public class PerformanceTest {
         }
         return randomWords;
     }
-
 }

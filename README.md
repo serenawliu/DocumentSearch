@@ -23,27 +23,24 @@ File2.txt – X matches
 File1.txt - X matches
 File3.txt – X matches
 
-Run a performance test that does 2M searches with random search
-terms, and measures execution time. Which approach is fastest? Why?
+_____________
 
-Search results:
-Run time for string search in milliseconds:  37869 ms
-Run time for regex search in milliseconds:  37692 ms
-Run time for preprocess search in milliseconds:  1221 ms
+To Install and Run this Application: 
 
-Index Search has the fastest execution time. Since the files are already processed by the time index search is called, 
-the execution time is composed of accesses to the map of stored word indices and word frequencies. 
-For both string and regular expression matching, each word in the text files
-would need to be processed at the time of the search - operations that are O(n) time, where n = the number of characters in the text file.
+Preconditions:
+- Java SE Runtime Environment 18.3 or higher is installed (build 10.0.2)
+- IntelliJ IDE is installed.
 
-Provide some thoughts on what you would do on the software or
-hardware side to make this program scale to handle massive content
-and/or very large request volume (5000 requests/second or more).
+Running the application:
+- Clone the DocumentSearch project, or download and unzip the project file. Open this project in the IntelliJ IDE.
 
-On the software side, there are many additions that could be made: building a cache of commonly searched terms and their frequencies,
-using the MapReduce programming model,
-using ElasticSearch which has a more robust indexing and data ingestion process, or creating an inverted index - a map of 
-unique words and a list of documents they can be found in.
+- Run SearchMain to run the search engine. Input a search term, then the desired search method.
 
-On the hardware side, distributing the search process across multiple 
-threads or multiple servers (including load balancing)
+- Run PerformanceTest to view execution times for 2 million random search terms for each search method.
+
+- Run SearchEngineTest to run a collection of unit tests.
+
+NOTE:
+Discussions on performance and scaling this application can be found in file DiscussionQuestions.txt.
+
+A short description of the index search can be found under IndexSearchDescription.

@@ -23,9 +23,9 @@ class SearchEngineTest extends TestCase {
     }
 
     void testSearchOneWord() {
-        engine.addTextFile("hitchhikers.txt")
-        engine.addTextFile("warp_drive.txt")
-        engine.addTextFile("french_armed_forces.txt")
+        engine.addTextFile(textFiles[0])
+        engine.addTextFile(textFiles[1])
+        engine.addTextFile(textFiles[2])
         engine.printMap(engine.search("warp", SearchEngine.searchMethod.STRING_SEARCH))
         assertEquals(outContent.toString(), "Search Results:\n\nwarp_drive.txt 6\nhitchhikers.txt 0\n" +
                 "french_armed_forces.txt 0\n")
@@ -40,9 +40,9 @@ class SearchEngineTest extends TestCase {
 
     }
     void testSearchMultipleWords() {
-        engine.addTextFile("hitchhikers.txt")
-        engine.addTextFile("warp_drive.txt")
-        engine.addTextFile("french_armed_forces.txt")
+        engine.addTextFile(textFiles[0])
+        engine.addTextFile(textFiles[1])
+        engine.addTextFile(textFiles[2])
         engine.printMap(engine.search("hello hi", SearchEngine.searchMethod.STRING_SEARCH))
         assertEquals(outContent.toString(), "Search Results:\n\nhitchhikers.txt 4\nfrench_armed_forces.txt 0\n" +
                 "warp_drive.txt 0\n")
@@ -57,9 +57,9 @@ class SearchEngineTest extends TestCase {
     }
 
     void testSearchSpecialCharacters() {
-        engine.addTextFile("hitchhikers.txt")
-        engine.addTextFile("warp_drive.txt")
-        engine.addTextFile("french_armed_forces.txt")
+        engine.addTextFile(textFiles[0])
+        engine.addTextFile(textFiles[1])
+        engine.addTextFile(textFiles[2])
         engine.printMap(engine.search("!!!!!", SearchEngine.searchMethod.STRING_SEARCH))
         assertEquals(outContent.toString(), "Search Results:\n\nhitchhikers.txt 1\nfrench_armed_forces.txt 0\n" +
                 "warp_drive.txt 0\n")
@@ -74,9 +74,9 @@ class SearchEngineTest extends TestCase {
     }
 
     void testSearchWordOnNewLine() {
-        engine.addTextFile("hitchhikers.txt")
-        engine.addTextFile("warp_drive.txt")
-        engine.addTextFile("french_armed_forces.txt")
+        engine.addTextFile(textFiles[0])
+        engine.addTextFile(textFiles[1])
+        engine.addTextFile(textFiles[2])
         engine.printMap(engine.search("Resurgent French armies", SearchEngine.searchMethod.STRING_SEARCH))
         assertEquals(outContent.toString(), "Search Results:\n\nfrench_armed_forces.txt 1\nhitchhikers.txt 0\n" +
                 "warp_drive.txt 0\n")
