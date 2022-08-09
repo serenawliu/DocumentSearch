@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Added functionality for supporting multiple words in a search term.">
-      <change afterPath="$PROJECT_DIR$/AlgorithmDescriptions.txt" afterDir="false" />
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Added descriptions for search methods in SearchDescriptions.">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +231,21 @@
       <option name="project" value="LOCAL" />
       <updated>1660005637485</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added functionality for supporting multiple words in a search term.">
+      <created>1660005701005</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1660005701005</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added descriptions for search methods in SearchDescriptions.">
+      <created>1660005713931</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1660005713931</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,7 +289,8 @@
     <MESSAGE value="Add input verification for user input." />
     <MESSAGE value="Added functionality for processing indices for text files." />
     <MESSAGE value="Added functionality for supporting multiple words in a search term." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added functionality for supporting multiple words in a search term." />
+    <MESSAGE value="Added descriptions for search methods in SearchDescriptions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added descriptions for search methods in SearchDescriptions." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -135,7 +135,6 @@ public class SearchEngine {
         String currentWord;
         Integer currentIndex;
         Queue<Integer> indicesToCheck = new LinkedList<>(tempMap.get(wordsToQuery[0]));
-        System.out.println("SIZE OF INDICES TO CHECK:::::" + indicesToCheck.size());
         int sizeOfIndicesToCheck;
 
         for (int i = 1; i < wordsToQuery.length; i++) {
@@ -144,9 +143,7 @@ public class SearchEngine {
 
             for (int j = 0; j<sizeOfIndicesToCheck; j++){
                 currentIndex = indicesToCheck.remove();
-                System.out.println("\nCURRENT INDEX:::::" + currentIndex);
                 for (Integer temp: tempMap.get(currentWord)) {
-                    System.out.print(" Index to match:::::: " + temp);
                     if (temp == currentIndex+1) {
                         indicesToCheck.add(temp);
                         break;
