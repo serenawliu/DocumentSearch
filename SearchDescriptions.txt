@@ -1,0 +1,37 @@
+ASSUMPTIONS:
+
+I'm assuming that there can be multiple search terms, separated by a space. A search term can contain any alphanumeric
+or special characters.
+
+Index Files:
+Count the word frequency in each text file, map results with key: word (String), value: frequency of word (Integer).
+Map the indices of each word in each text file with key: word (String), value: List of the word's indices (Integer).
+
+Preprocess Search:
+Steps:
+1. First, check to see if the search term contains multiple words, separated by a space.
+If there is only one word, return that value from the map of word frequencies (if it exists).
+2. If the search term contains multiple words, check to see that all words are present in the map of word frequencies.
+Return 0 if not.
+3. Call index search.
+
+Index search:
+
+Steps
+At this point, we know that all words are present within the text file, now we just have to see that the terms are in
+the correct order sequentially.
+Pre-loop:
+Add in all indices to an "indicesToCheck" queue from the first word of the search term.
+Calculate this size. There cannot be more search matches than there are indices of this first word.
+
+1. Iterate through the array of words in the search term.
+2. For each value in the "indicesToCheck" queue:
+    Remove the next value from the "indicesToCheck" queue. Check if any of the current word's indices directly
+    follow the queue value, i.e. current word's index == queue value + 1.
+    If this statement is true, add the current word's index to the  "indicesToCheck" queue and continue comparing
+    this current word's indices to the queue's indices.
+3. Repeat this process until:
+    A. The "indicesToCheck" queue is empty, indicating there are NO matches of the full search term or
+    B. All words of the search term have been processed.
+4. The return value will then be the size of the "indicesToCheck" queue - where a value would indicate that the correct
+index path was present for each search term.

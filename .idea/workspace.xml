@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Added functionality for processing indices for text files.">
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Added functionality for supporting multiple words in a search term.">
       <change afterPath="$PROJECT_DIR$/AlgorithmDescriptions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hitchhikers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/hitchhikers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659995556689</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added functionality for supporting multiple words in a search term.">
+      <created>1660005637485</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1660005637485</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -271,7 +274,8 @@
     <MESSAGE value="Add functionality to accept user input to search." />
     <MESSAGE value="Add input verification for user input." />
     <MESSAGE value="Added functionality for processing indices for text files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added functionality for processing indices for text files." />
+    <MESSAGE value="Added functionality for supporting multiple words in a search term." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added functionality for supporting multiple words in a search term." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
