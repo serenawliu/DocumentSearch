@@ -21,39 +21,30 @@ public class SearchEngine {
     }
 
     /**
-    Method to call each search method
-    @param stringToMatch - string to search
-    @param searchType - enum indicating method used to search
-    @return - LinkedHashMap containing each file name and
+     * Method to call each search method
+     *
+     * @param stringToMatch - string to search
+     * @param searchType    - enum indicating method used to search
+     * @return - LinkedHashMap containing each file name and
      */
     public LinkedHashMap<String, Integer> search(String stringToMatch, searchMethod searchType) {
 
         LinkedHashMap<String, Integer> hm = new LinkedHashMap<>();
-        int searchResult;
 
         switch (searchType) {
             case STRING_SEARCH:
                 for (String fileName : textFileNames) {
-                    searchResult = stringSearch(stringToMatch.toLowerCase(), fileName);
-                    if (0 < searchResult) {
-                        hm.put(fileName, searchResult);
-                    }
+                    hm.put(fileName, stringSearch(stringToMatch.toLowerCase(), fileName));
                 }
                 break;
             case REGEX_SEARCH:
                 for (String fileName : textFileNames) {
-                    searchResult = regexSearch(stringToMatch.toLowerCase(), fileName);
-                    if (0 < searchResult) {
-                        hm.put(fileName, searchResult);
-                    }
+                    hm.put(fileName, regexSearch(stringToMatch.toLowerCase(), fileName));
                 }
                 break;
             case PREPROCESS_SEARCH:
                 for (String fileName : textFileNames) {
-                    searchResult = preprocessSearch(stringToMatch.toLowerCase(), fileName);
-                    if (0 < searchResult) {
-                        hm.put(fileName, searchResult);
-                    }
+                    hm.put(fileName, preprocessSearch(stringToMatch.toLowerCase(), fileName));
                 }
                 break;
             default:
@@ -63,10 +54,11 @@ public class SearchEngine {
     }
 
     /**
-    Method to parse through a text file string and search for a target string.
-    @param stringToMatch - target string to find in file
-    @param fileName - file to search for matching string
-    @return int indicating occurrences of exact string match
+     * Method to parse through a text file string and search for a target string.
+     *
+     * @param stringToMatch - target string to find in file
+     * @param fileName      - file to search for matching string
+     * @return int indicating occurrences of exact string match
      */
     private int stringSearch(String stringToMatch, String fileName) {
 
@@ -79,11 +71,12 @@ public class SearchEngine {
     }
 
     /**
-    Method to parse through a text file string and search for a target string using regex.
-    @param stringToMatch - target string to find in file
-    @param fileName - file to search for matching string
-    @return int indicating occurrences of exact string match
-    */
+     * Method to parse through a text file string and search for a target string using regex.
+     *
+     * @param stringToMatch - target string to find in file
+     * @param fileName      - file to search for matching string
+     * @return int indicating occurrences of exact string match
+     */
     private int regexSearch(String stringToMatch, String fileName) {
 
         Pattern pattern = Pattern.compile(stringToMatch, Pattern.LITERAL);
@@ -101,37 +94,39 @@ public class SearchEngine {
     }
 
     /**
-    Method to parse through a text file string and search for a target string using an indexed search.
-    @param stringToMatch - target string to find in file
-    @param fileName - file to search for matching string
-    @return int indicating occurrences of exact string match
+     * Method to parse through a text file string and search for a target string using an indexed search.
+     *
+     * @param stringToMatch - target string to find in file
+     * @param fileName      - file to search for matching string
+     * @return int indicating occurrences of exact string match
      */
     private int preprocessSearch(String stringToMatch, String fileName) {
         if (!wordFrequencyMapping.containsKey(fileName)) return 0;
-        // If the search is one term, access the frequency map. Otherwise, access indices
+        // If the search is one term, access the frequency map. Otherwise, call indexSearch.
         Map<String, Integer> tempMap;
-        String[] wordsToQuery= stringToMatch.split(" ");
-        if(1 == wordsToQuery.length){
+        String[] wordsToQuery = stringToMatch.split(" ");
+        if (1 == wordsToQuery.length) {
             if (wordFrequencyMapping.get(fileName).containsKey(stringToMatch)) {
                 return wordFrequencyMapping.get(fileName).get(stringToMatch);
             }
-        }
-        else {
-                tempMap = wordFrequencyMapping.get(fileName);
-                // Optimization - see if all words are present
-                for (String word: wordsToQuery){
-                    if (!tempMap.containsKey(word)) {
-                        return 0;
-                    }}
+        } else {
+            tempMap = wordFrequencyMapping.get(fileName);
+            for (String word : wordsToQuery) {
+                if (!tempMap.containsKey(word)) {
+                    return 0;
+                }
+            }
             return indexSearch(wordsToQuery, fileName);
         }
         return 0;
-        }
+    }
+
     /**
-    Method for a search query containing multiple words.
-    @param wordsToQuery - array of words in search term.
-    @param fileName - fileName to perform indexSearch.
-    @return int indicating number of search term matches in file.
+     * Method for a search query containing multiple words.
+     *
+     * @param wordsToQuery - array of words in search term.
+     * @param fileName     - fileName to perform indexSearch.
+     * @return int indicating number of search term matches in file.
      */
     private int indexSearch(String[] wordsToQuery, String fileName) {
         Map<String, List<Integer>> tempMap = wordIndexMapping.get(fileName);
@@ -144,10 +139,10 @@ public class SearchEngine {
             currentWord = wordsToQuery[i];
             sizeOfIndicesToCheck = indicesToCheck.size();
 
-            for (int j = 0; j<sizeOfIndicesToCheck; j++){
+            for (int j = 0; j < sizeOfIndicesToCheck; j++) {
                 currentIndex = indicesToCheck.remove();
-                for (Integer temp: tempMap.get(currentWord)) {
-                    if (temp == currentIndex+1) {
+                for (Integer temp : tempMap.get(currentWord)) {
+                    if (temp == currentIndex + 1) {
                         indicesToCheck.add(temp);
                         break;
                     }
@@ -158,8 +153,9 @@ public class SearchEngine {
     }
 
     /**
-    Helper method to index a text file for the indexed search method.
-    @param fileName - file to search for matching string
+     * Helper method to index a text file for the indexed search method.
+     *
+     * @param fileName - file to search for matching string
      */
     private void indexTextFile(String fileName) {
 
@@ -188,10 +184,9 @@ public class SearchEngine {
                 }
             }
 
-            if(!wordIndices.containsKey(wordLower)) {
+            if (!wordIndices.containsKey(wordLower)) {
                 tempIndexList = new ArrayList<>();
-            }
-            else{
+            } else {
                 tempIndexList = wordIndices.get(wordLower);
             }
             tempIndexList.add(index);
@@ -214,8 +209,9 @@ public class SearchEngine {
     }
 
     /**
-    Method to add a text file to list of text files to be queried.
-    @param fileName - Name of file to add.
+     * Method to add a text file to list of text files to be queried.
+     *
+     * @param fileName - Name of file to add.
      */
     public void addTextFile(String fileName) throws IOException {
 
@@ -229,8 +225,9 @@ public class SearchEngine {
     }
 
     /**
-    Helper method to convert a File to a String and store it in a shared map.
-    @param fileName - Name of file to convert to a string
+     * Helper method to convert a File to a String and store it in a shared map.
+     *
+     * @param fileName - Name of file to convert to a string
      */
     private void storeTextFileToString(String fileName) throws IOException {
 
@@ -241,10 +238,12 @@ public class SearchEngine {
             textFilesAsStrings.put(fileName, fileString.toLowerCase());
         }
     }
+
     /**
-    Helper method to sort a LinkedHashMap by highest value (relevance).
-    @param unsortedMap - map to be sorted by relevance.
-    @return sorted map by relevance.
+     * Helper method to sort a LinkedHashMap by highest value (relevance).
+     *
+     * @param unsortedMap - map to be sorted by relevance.
+     * @return sorted map by relevance.
      */
     private LinkedHashMap<String, Integer> sortMapByRelevance(Map<String, Integer> unsortedMap) {
 
@@ -256,6 +255,7 @@ public class SearchEngine {
 
     /**
      * Method to print map details to the console.
+     *
      * @param map - map to print.
      */
     public void printMap(Map<String, Integer> map) {
@@ -267,6 +267,7 @@ public class SearchEngine {
 
     /**
      * Method to get loaded and processed text file names.
+     *
      * @return Set of text file names.
      */
     public Set<String> getTextFileNames() {

@@ -14,18 +14,27 @@ public class SearchMain {
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter a search term: ");
         String searchTerm = scan.nextLine();
+
         System.out.println("\nEnter an integer for a searchMethod 0: String Search, 1: RegEx Search, 2: Indexed Search:");
-        if (!scan.hasNextInt()) {
-            System.out.println("Please enter a valid value.");
-        } else {
-            int searchSelection = scan.nextInt();
-            if (searchSelection > 2 || searchSelection < 0) {
-                System.out.println("Please enter a valid value.");
-            } else {
-                scan.close();
-                engine.printMap(engine.search(searchTerm, SearchEngine.searchMethod.values()[searchSelection]));
+        while(true){
+
+            if (!scan.hasNextInt()) {
+                scan.next();
+                System.out.println("Please enter a valid value!");
+            }
+            else {
+                int searchSelection = scan.nextInt();
+                if (searchSelection > 2 || searchSelection < 0) {
+                    System.out.println("Please enter a valid value.");
+                } else {
+                    scan.close();
+                    engine.printMap(engine.search(searchTerm, SearchEngine.searchMethod.values()[searchSelection]));
+                    break;
+                }
+
             }
 
         }
+
     }
 }

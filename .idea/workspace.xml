@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Added descriptions for search methods in SearchDescriptions.">
+    <list default="true" id="01dad325-5ebc-4798-a016-b8654e41b94b" name="Changes" comment="Code cleanup in aisle indexSearch.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/hitchhikers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/hitchhikers.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/casestudy/SearchMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660005713931</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Code cleanup in aisle indexSearch.">
+      <created>1660006535901</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1660006535901</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -290,7 +300,8 @@
     <MESSAGE value="Added functionality for processing indices for text files." />
     <MESSAGE value="Added functionality for supporting multiple words in a search term." />
     <MESSAGE value="Added descriptions for search methods in SearchDescriptions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added descriptions for search methods in SearchDescriptions." />
+    <MESSAGE value="Code cleanup in aisle indexSearch." />
+    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup in aisle indexSearch." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
